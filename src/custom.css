@@ -1,0 +1,33 @@
+/* Override variabel Bootstrap */
+:root {
+  --bs-primary: #5D4037;
+  --bs-secondary: #A1887F;
+  --bs-success: #D4AF37;
+  --bs-dark: #3E2723;
+}
+
+/* Font family */
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #F5F5DC;
+  color: #3E2723;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Merriweather', serif;
+  color: #5D4037;
+}
+
+.navbar-dark {
+  background-color: var(--bs-dark);
+}
+
+.btn-primary {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--bs-secondary);
+  border-color: var(--bs-secondary);
+}

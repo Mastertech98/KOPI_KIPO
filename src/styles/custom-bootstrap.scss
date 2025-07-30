@@ -1,0 +1,602 @@
+$primary: #6F4E37;           // Warna coklat kopi tua khas
+$secondary: #C19A6B;         // Warna coklat muda caramel
+$success: #A67B5B;           // Warna coklat hijau yang hangat
+$info: #D4A373;              // Warna cream kopi
+$warning: #E9C46A;           // Warna kuning hangat (seperti foam kopi)
+$danger: #9B2226;            // Warna merah gelap, untuk ikon error dll
+$body-bg: #EFE6DD;           // Background halaman cream lembut
+$font-family-base: 'Georgia, serif';
+
+
+.cart-container {
+  margin: 80px 40px 40px 40px;   // Margin atas 80px agar tidak nempel navbar, auto center secara horizontal, margin bawah 40px
+  padding: 0 20px;     
+  padding-bottom: 20px;
+  background-color: #fefefe;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #3a3a3a;
+
+  h2 {
+    padding-top: 20px;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: #4B3621;   
+  }
+
+  .cart-items {
+    .card {
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: box-shadow 0.3s ease;
+      margin-bottom: 1.5rem;
+
+      &:hover {
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      .row {
+
+        .col-md-3 {
+          img {
+            border-radius: 12px 0 0 12px;
+            height: 150px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+
+            &:hover {
+              transform: scale(1.05);
+            }
+          }
+        }
+
+        .col-md-9 {
+          padding: 1rem 1.5rem;
+
+          .card-body {
+            h5.card-title {
+              color: #6F4E37;
+              font-weight: 700;
+              margin-bottom: 0.5rem;
+            }
+
+            p.card-text {
+              font-size: 1rem;
+              margin-bottom: 0.8rem;
+              color: #5A4033;
+            }
+
+            .row.align-items-center {
+         
+              .col-md-4 {
+                label.form-label {
+                  font-weight: 600;
+                  color: #4B3621;
+                }
+
+                .input-group {
+                  border-radius: 8px;
+                  overflow: hidden;
+                  box-shadow: inset 0 0 6px #d6c9bc;
+
+                  input.form-control {
+                    border: none;
+                    width: 60px;
+                    font-weight: 600;
+                    color: #553B2E;
+                    text-align: center;
+                    &:focus {
+                      outline: 2px solid #926F5B;
+                      box-shadow: none;
+                    }
+                  }
+
+                  button.btn-outline-secondary {
+                    border: none;
+                    background-color: #9C7B57;
+                    color: white;
+                    font-size: 1.2rem;
+                    transition: background-color 0.3s ease;
+
+                    &:hover {
+                      background-color: #6F4E37;
+                      cursor: pointer;
+                    }
+                  }
+                }
+              }
+
+              .col-md-4 {
+                strong {
+                  font-size: 1.05rem;
+                  color: #7B523B;
+                }
+              }
+
+              .col-md-4 {
+                button.btn-danger {
+                  background-color: #8B3A3A;
+                  border: none;
+                  border-radius: 8px;
+                  font-weight: 700;
+                  transition: background-color 0.3s ease;
+
+                  &:hover {
+                    background-color: #5C2626;
+                    cursor: pointer;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .order-summary {
+    .card {
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(107, 70, 45, 0.2);
+      padding: 1.5rem;
+
+      .card-body {
+        h5.card-title {
+          font-size: 1.6rem;
+          font-weight: 700;
+          color: #5A3E1E;
+          margin-bottom: 1.2rem;
+          border-bottom: 2px solid #8B6B48;
+          padding-bottom: 6px;
+        }
+
+        p, h4 {
+          color: #4E3621;
+          font-weight: 600;
+        }
+
+        hr {
+          border-color: #C9A66B;
+          margin: 0.9rem 0 1rem;
+        }
+
+        .d-grid {
+          gap: 1rem;
+
+          button.btn-success {
+            background-color: #7B5E2B;
+            font-weight: 700;
+            border-radius: 12px;
+            padding: 0.7rem 0;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+              background-color: #5C4318;
+              cursor: pointer;
+            }
+          }
+
+          button.btn-outline-danger {
+            border-color: #8B3A3A;
+            color: #8B3A3A;
+            border-radius: 12px;
+            font-weight: 700;
+            padding: 0.6rem 0;
+            transition: all 0.3s ease;
+
+            &:hover {
+              background-color: #8B3A3A;
+              color: white;
+              cursor: pointer;
+              border-color: #8B3A3A;
+            }
+          }
+
+          a.btn-outline-primary {
+            border-color: #4B5360;
+            color: #4B5360;
+            border-radius: 12px;
+            font-weight: 700;
+            padding: 0.6rem 0;
+            text-align: center;
+            transition: all 0.3s ease;
+
+            &:hover {
+              background-color: #4B5360;
+              color: white;
+              text-decoration: none;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+// Elegant alert style for cart notifications
+.cart-alert {
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fff;
+  background: linear-gradient(135deg, #6f4e37 0%, #a67c52 100%);
+}
+
+.wrapper {
+  margin: 80px 40px 40px 40px;   // Margin atas 80px agar tidak nempel navbar, auto center secara horizontal, margin bawah 40px
+  padding: 0 20px;          // Padding kiri kanan agar tidak nempel ke tepi layar
+
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #3a3a3a;
+  line-height: 1.6;
+  background-color: #fff;   // Latar putih bersih
+  box-sizing: border-box;
+
+  h1, h2, h3, h4 {
+    padding-top: 20px;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: #4B3621;         // Warna coklat gelap klasik kopi
+  }
+
+  p {
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+    color: #555;
+  }
+
+  /* Jika ada link di dalam wrapper */
+  a {
+    color: #6F4E37;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #8B6B48;
+      text-decoration: underline;
+    }
+  }
+}
+
+.custom-form-wrapper {
+  background-color: white;
+  padding: 2.5rem 3rem;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(111, 78, 55, 0.15); // coklat kopi shadow lembut
+  max-width: 400px;
+  margin: 3rem auto;
+  font-family: 'Montserrat', 'Georgia', serif;
+  color: #4B3621;
+
+  h2, h3, h4 {
+    font-family: 'Georgia', serif;
+    font-weight: 700;
+    color: #5A3E2B;
+    margin-bottom: 1.6rem;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #5A3E2B;
+    letter-spacing: 0.03em;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 0.65rem 1rem;
+    border-radius: 14px;
+    border: 2px solid #B0A189;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #5A3E2B;
+    box-sizing: border-box;
+
+    &::placeholder {
+      color: #CABAA4;
+      font-style: italic;
+    }
+
+    &:focus {
+      border-color: #6F4E37;
+      outline: none;
+      box-shadow: 0 0 8px 2px rgba(111, 78, 55, 0.25);
+      transition: all 0.3s ease;
+    }
+  }
+
+  .error-message {
+    color: #8B0000;
+    margin-top: 0.8rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  button, input[type="submit"] {
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 1.6rem;
+    background: linear-gradient(135deg, #6F4E37 0%, #8B6B48 100%);
+    color: #FEF6E4;
+    border: none;
+    border-radius: 18px;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(111, 78, 55, 0.3);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      background: linear-gradient(135deg, #8B6B48 0%, #6F4E37 100%);
+      box-shadow: 0 8px 16px rgba(111, 78, 55, 0.45);
+    }
+  }
+}
+
+.admin-product-table-wrapper {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2rem 2.5rem;
+  background-color: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(111, 78, 55, 0.15);
+  font-family: 'Montserrat', 'Georgia', serif;
+  color: #4B3621;
+
+  h2 {
+    font-family: 'Georgia', serif;
+    font-weight: 700;
+    color: #5A3E2B;
+    margin-bottom: 1.6rem;
+    font-size: 1.8rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 12px;
+
+    thead {
+      tr {
+        th {
+          text-align: left;
+          padding: 12px 15px;
+          background-color: #6F4E37;
+          color: #FEF6E4;
+          font-weight: 700;
+          font-size: 1.05rem;
+          border-top-left-radius: 14px;
+          border-top-right-radius: 14px;
+          user-select: none;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        background-color: #F7F1E1;
+        box-shadow: 0 4px 6px rgba(111, 78, 55, 0.12);
+        border-radius: 14px;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #E9D8B0;
+        }
+
+        td {
+          padding: 14px 15px;
+          vertical-align: middle;
+          font-size: 1rem;
+          color: #5A3E2B;
+          border-top: 1px solid transparent;
+
+          &:first-child {
+            border-top-left-radius: 14px;
+            border-bottom-left-radius: 14px;
+          }
+
+          &:last-child {
+            border-top-right-radius: 14px;
+            border-bottom-right-radius: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  .actions {
+    display: flex;
+    gap: 12px;
+
+    button {
+      background: linear-gradient(135deg, #6F4E37, #8B6B48);
+      border: none;
+      border-radius: 14px;
+      padding: 8px 16px;
+      color: #FEF6E4;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(111, 78, 55, 0.25);
+      transition: background 0.3s ease;
+
+      &:hover {
+        background: linear-gradient(135deg, #8B6B48, #6F4E37);
+      }
+    }
+  }
+}
+
+.product-list-wrapper {
+  max-width: 1100px;
+  margin: 3rem auto;
+  padding: 1rem 2rem;
+  font-family: 'Montserrat', sans-serif;
+  color: #4B3621;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2rem;
+
+  .product-card {
+    background: linear-gradient(145deg, #FBF6EC, #E6D9BC);
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(111, 78, 55, 0.25);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 20px 30px rgba(111, 78, 55, 0.45);
+    }
+
+    img {
+      width: 100%;
+      border-radius: 14px;
+      margin-bottom: 1rem;
+      object-fit: cover;
+      aspect-ratio: 4 / 3;
+      box-shadow: 0 6px 12px rgba(111, 78, 55, 0.2);
+    }
+
+    h3 {
+      font-weight: 700;
+      font-size: 1.15rem;
+      margin-bottom: 0.5rem;
+      color: #6F4E37;
+    }
+
+    p.category {
+      font-style: italic;
+      color: #8B6B48;
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+    }
+
+    p.price {
+      font-weight: 700;
+      color: #5A3E2B;
+      font-size: 1.1rem;
+      margin-top: auto;
+    }
+
+    button {
+      margin-top: 1rem;
+      background: #6F4E37;
+      color: #FEF6E4;
+      border: none;
+      border-radius: 14px;
+      padding: 0.65rem 1.2rem;
+      cursor: pointer;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      box-shadow: 0 5px 12px rgba(111, 78, 55, 0.3);
+      transition: background 0.3s ease;
+
+      &:hover {
+        background: #8B6B48;
+      }
+    }
+  }
+}
+
+.navbar-wrapper {
+  background: linear-gradient(90deg, #6F4E37 0%, #8B6B48 100%);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0.75rem 2rem;
+  box-shadow: 0 4px 10px rgba(111, 78, 55, 0.5);
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #FEF6E4;
+
+  a {
+    color: #FEF6E4;
+    text-decoration: none;
+    font-weight: 600;
+    margin: 0 1rem;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #E6D9BC;
+    }
+  }
+
+  .navbar-logo {
+    font-weight: 700;
+    font-size: 1.6rem;
+    letter-spacing: 0.08em;
+    user-select: none;
+    cursor: pointer;
+    color: #FEF6E4;
+  }
+
+  .navbar-menu {
+    display: flex;
+    align-items: center;
+
+    .active {
+      border-bottom: 2.5px solid #FEF6E4;
+    }
+  }
+
+  button {
+    background: transparent;
+    border: 1.5px solid #FEF6E4; /* border warna krem yang sesuai tema */
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #FEF6E4;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover,
+    &:focus {
+      background-color: #FEF6E4;
+      color: #6F4E37; /* warna coklat gelap dari gradien */
+      outline: none;
+      box-shadow: 0 0 8px rgba(254, 246, 228, 0.7); /* glow lembut */
+    }
+
+    &:active {
+      background-color: #E6D9BC;
+      color: #5B3E2B;
+      box-shadow: none;
+    }
+  }  
+
+  @media (max-width: 768px) {
+    padding: 0.75rem 1rem;
+
+    .navbar-menu {
+      gap: 0.8rem;
+      a {
+        margin: 0 0.5rem;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+@import "~bootstrap/scss/bootstrap";
