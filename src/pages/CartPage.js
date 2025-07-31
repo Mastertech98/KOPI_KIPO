@@ -6,7 +6,7 @@ function CartPage({onClearCart, user}) {
   useEffect(() => {
     // load cart from localStorage or backend if implemented
     const savedCart = localStorage.getItem('cart');
-    //console.log("user cart page : " + user);
+    console.log("user cart page : " + user);
     if (savedCart) {
       setCartItems(JSON.parse(savedCart));
     }
@@ -36,7 +36,7 @@ function CartPage({onClearCart, user}) {
       return;
     }
 
-    //console.log("user : " , user);
+    console.log("user : " , user);
 
     try {
     // Buat payload sesuai kebutuhan backend
@@ -59,7 +59,7 @@ function CartPage({onClearCart, user}) {
         const result = await response.json();
         alert(`Order berhasil dibuat dengan ID ${result.orderId}`);
         setCartItems([]); // reset keranjang setelah checkout
-        localStorage.removeItem('cartItems'); // bersihkan localStorage juga jika perlu
+        localStorage.removeItem('cart'); // bersihkan localStorage juga jika perlu
       } else {
         const errorData = await response.json();
         alert(`Gagal checkout: ${errorData.error || 'Unknown error'}`);

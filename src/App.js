@@ -7,8 +7,8 @@ import CartPage from './pages/CartPage';
 import LoginPage from './pages/LoginPage';
 import AdminPage from './pages/AdminPage';
 import PembukuanPage from './pages/PembukuanPage';
-import OrderPage from './pages/OrderPage'; // Fixed import name
 import AdminOrderPage from './pages/AdminOrderPage';
+import RegisterPage from './pages/RegisterPage';
 
 function App() {
   // Products state - initially empty
@@ -24,14 +24,13 @@ function App() {
       try {
         const decoded = jwtDecode(token);
         // Cek apakah token masih valid (boleh ditambahkan cek exp token di sini)
-        //console.log(decoded);
+        console.log("cek decoded : ", decoded);
         setIsLoggedIn(true);
         setUser({ id:decoded.id, username: decoded.username, role: decoded.role });
         //console.log(user);
       } catch (error) {
         setIsLoggedIn(false);
         setUser(null);
-        localStorage.removeItem("token");
       }
     }
   }, []);
@@ -104,10 +103,28 @@ function App() {
   };
 
   // Auth functions
-  const handleLogin = () => setIsLoggedIn(true);
+  const handleLogin = () => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      try {
+        const decoded = jwtDecode(token);
+        // Cek apakah token masih valid (boleh ditambahkan cek exp token di sini)
+        console.log("cek decoded : ", decoded);
+        setIsLoggedIn(true);
+        setUser({ id:decoded.id, username: decoded.username, role: decoded.role });
+        //console.log(user);
+      } catch (error) {
+        setIsLoggedIn(false);
+        setUser(null);
+      }
+    }
+  };
   const handleLogout = () => {
     setIsLoggedIn(false);
     setCartItems([]); // Clear cart on logout
+    setIsLoggedIn(false);
+    setUser(null);
+    localStorage.removeItem("token");
   };
 
   return (
@@ -115,6 +132,7 @@ function App() {
       <NavbarMenu isLoggedIn={isLoggedIn} onLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<HomePage products={products} onAddToCart={addToCart} />} />
+        <Route path="/register" element={<RegisterPage />} />
         <Route 
           path="/cart" 
           element={
@@ -127,7 +145,7 @@ function App() {
             />
           } 
         />
-        <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
+        <Route path="/login" element={<LoginPage onLogin={handleLogin}/>} />
         <Route
           path="/admin"
           element={

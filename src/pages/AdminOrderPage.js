@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../styles/AdminOrders.scss'
 
 const API_URL = 'http://localhost:3001/api/orders';
 
@@ -61,7 +62,7 @@ const AdminOrderPage = () => {
   };
 
   return (
-    <div>
+    <div className="admin-orders">
       <h2>Admin - Kelola Pesanan</h2>
 
       {loading ? (
@@ -71,7 +72,7 @@ const AdminOrderPage = () => {
           <thead>
             <tr>
               <th>ID</th>
-              <th>User ID</th>
+              <th>Nama</th>
               <th>Total Harga</th>
               <th>Status</th>
               <th>Aksi</th>

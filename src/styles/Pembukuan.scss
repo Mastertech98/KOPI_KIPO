@@ -1,0 +1,79 @@
+.pembukuan {
+  max-width: 960px;
+  margin: 20px auto;
+  font-family: 'Merriweather', serif; /* Sama dengan admin-orders */
+  color: #3a3a3a;
+  background-color: #faf9f6;
+  padding: 20px;
+  border: 1px solid #d4cec3;
+  border-radius: 6px;
+
+  h2 {
+    text-align: center;
+    color: #544b3d;
+    border-bottom: 2px solid #b9ae9c;
+    padding-bottom: 10px;
+    font-weight: 700;
+    font-size: 28px;
+    margin-bottom: 25px;
+    letter-spacing: 0.05em;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(180, 170, 150, 0.2);
+
+    thead {
+      background-color: #b9ae9c;
+      color: #3a3a3a;
+      font-variant: small-caps;
+
+      th {
+        padding: 12px 14px;
+        border: 1px solid #d4cec3;
+        text-align: left;
+        font-weight: 600;
+        font-size: 16px;
+        letter-spacing: 0.04em;
+      }
+    }
+
+    tbody {
+      tr {
+        cursor: default;
+
+        &:hover {
+          background-color: #f3f2ec;  /* sedikit lebih soft hover */
+        }
+
+        td {
+          padding: 12px 14px;
+          border: 1px solid #d4cec3;
+          vertical-align: middle;
+          font-size: 15px;
+        }
+      }
+    }
+
+    tfoot {
+      tr {
+        background-color: #e4dfd3;
+        font-weight: 700;
+
+        td {
+          border: 1px solid #d4cec3;
+          padding: 12px 14px;
+          font-size: 15px;
+          color: #4a453d;
+        }
+
+        td[colspan='2'] {
+          font-style: italic;
+        }
+      }
+    }
+  }
+}

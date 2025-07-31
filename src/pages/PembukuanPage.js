@@ -1,10 +1,26 @@
 import React, { useEffect, useState } from 'react';
+import "../styles/Pembukuan.scss"
 
 function PembukuanPage() {
   const [transactions, setTransactions] = useState([]);
 
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+
+    // Ambil komponen tanggal
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // bulan 0-11
+    const year = String(date.getFullYear()).slice(-2); // 2 digit tahun
+
+    // Ambil jam dan menit
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+
+    // Gabungkan sesuai format: DD MM YY - HH:MM
+    return `${day}-${month}-${year} ${hours}:${minutes}`;
+  }
   useEffect(() => {
-    fetch('http://localhost:3001/api/transactions') // Pastikan endpoint ada di backend
+    fetch('http://localhost:3001/api/orders') // Pastikan endpoint ada di backend
       .then(res => res.json())
       .then(data => setTransactions(data))
       .catch(err => {
@@ -17,12 +33,12 @@ function PembukuanPage() {
       });
   }, []);
 
-  const totalIncome = transactions.reduce((sum, t) => sum + t.income, 0);
-  const totalExpense = transactions.reduce((sum, t) => sum + t.expense, 0);
+  const totalIncome = transactions.reduce((sum, t) => sum + Number(t.total_price), 0);
+  const totalExpense = transactions.reduce((sum, t) => 0, 0);
   const balance = totalIncome - totalExpense;
 
   return (
-    <div>
+    <div className='pembukuan'>
       <h2>Pembukuan</h2>
       <table>
         <thead>
@@ -33,9 +49,9 @@ function PembukuanPage() {
         <tbody>
           {transactions.map(tx => (
             <tr key={tx.id}>
-              <td>{tx.date}</td>
-              <td>{tx.description}</td>
-              <td>{tx.income}</td>
+              <td>{formatDate(tx.order_date)}</td>
+              <td>{tx.user_id}</td>
+              <td>{Number(tx.total_price)}</td>
               <td>{tx.expense}</td>
             </tr>
           ))}
@@ -45,10 +61,6 @@ function PembukuanPage() {
             <td colSpan="2">Total</td>
             <td>{totalIncome}</td>
             <td>{totalExpense}</td>
-          </tr>
-          <tr>
-            <td colSpan="2">Saldo</td>
-            <td colSpan="2">{balance}</td>
           </tr>
         </tfoot>
       </table>
