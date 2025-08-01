@@ -141,7 +141,9 @@ return (
             <small className="error-text">{errors.confirmPassword}</small>
         )}
         </div>
-
+        <p>Have an account?
+          <a href="/login">Login</a>
+        </p>
         <button type="submit" className="btn-submit">Register</button>
     </form>
     </div>

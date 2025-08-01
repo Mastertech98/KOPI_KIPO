@@ -52,7 +52,9 @@ function LoginPage({ onLogin }) {
           value={password}
           onChange={(e) => setPassword(e.target.value)} 
         />
-
+        <p>Don't have an account?
+          <a href='/register'>Register</a>
+        </p>
         {error && <p className="error-message">{error}</p>}
 
         <button type="submit">Login</button>

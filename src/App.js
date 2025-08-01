@@ -9,12 +9,15 @@ import AdminPage from './pages/AdminPage';
 import PembukuanPage from './pages/PembukuanPage';
 import AdminOrderPage from './pages/AdminOrderPage';
 import RegisterPage from './pages/RegisterPage';
+import ContactUsPage from './pages/ContactUsPage';
+import AdminRoute from './components/guards/AdminRoute';
 
 function App() {
   // Products state - initially empty
   const [products, setProducts] = useState([]);
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
@@ -23,17 +26,23 @@ function App() {
     if (token) {
       try {
         const decoded = jwtDecode(token);
-        // Cek apakah token masih valid (boleh ditambahkan cek exp token di sini)
-        console.log("cek decoded : ", decoded);
         setIsLoggedIn(true);
         setUser({ id:decoded.id, username: decoded.username, role: decoded.role });
-        //console.log(user);
+        if (decoded.role === 'admin'){
+          setIsAdmin(true);
+        } else {
+          setIsAdmin(false);
+        }
       } catch (error) {
         setIsLoggedIn(false);
         setUser(null);
       }
     }
   }, []);
+
+  useEffect(() => {
+  console.log('isAdmin updated:', isAdmin);
+}, [isAdmin]);
 
   const addToCart = (product, quantity) => {
     const qty = parseInt(quantity, 10);
@@ -81,6 +90,8 @@ function App() {
 
   const clearCart = () => {
     setCartItems([]);
+    localStorage.removeItem("cart");
+    window.location.reload();
   };
 
   // Functions for product management (Admin)
@@ -109,28 +120,38 @@ function App() {
       try {
         const decoded = jwtDecode(token);
         // Cek apakah token masih valid (boleh ditambahkan cek exp token di sini)
-        console.log("cek decoded : ", decoded);
         setIsLoggedIn(true);
         setUser({ id:decoded.id, username: decoded.username, role: decoded.role });
-        //console.log(user);
+        console.log("cek decoded : ", decoded);
+        if (decoded.role === 'admin'){
+          setIsAdmin(true);
+        } else {
+          console.log("decoded role tidak sama dengan admin");
+          setIsAdmin(false);
+        }
+        console.log("cek admin : ", isAdmin);
       } catch (error) {
         setIsLoggedIn(false);
         setUser(null);
+        setIsAdmin(false);
       }
     }
+    //console.log(isAdmin);
   };
   const handleLogout = () => {
     setIsLoggedIn(false);
     setCartItems([]); // Clear cart on logout
     setIsLoggedIn(false);
     setUser(null);
+    setIsAdmin(false);
     localStorage.removeItem("token");
   };
 
   return (
     <Router>
-      <NavbarMenu isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+      <NavbarMenu isLoggedIn={isLoggedIn} onLogout={handleLogout } isAdmin={isAdmin} />
       <Routes>
+        <Route path="contactus" element={<ContactUsPage/>}></Route>
         <Route path="/" element={<HomePage products={products} onAddToCart={addToCart} />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route 
@@ -149,20 +170,22 @@ function App() {
         <Route
           path="/admin"
           element={
-            isLoggedIn ? (
+            <AdminRoute user = {user}>
               <AdminPage
                 products={products}
                 addProduct={addProduct}
                 updateProduct={updateProduct}
                 deleteProduct={deleteProduct}
-              />
-            ) : (
-              <Navigate to="/login" />
-            )
+                />
+            </AdminRoute>
           }
         />
-        <Route path="/pembukuan" element={isLoggedIn ? <PembukuanPage /> : <Navigate to="/login" />} />
-        <Route path="/orders" element={<AdminOrderPage />} />
+        <Route path="/pembukuan" element={<AdminRoute user = {user}> <PembukuanPage /></AdminRoute>} />
+        <Route path="/orders" element={
+          <AdminRoute user = {user}>
+            <AdminOrderPage />
+          </AdminRoute>
+        } />
       </Routes>
     </Router>
   );
